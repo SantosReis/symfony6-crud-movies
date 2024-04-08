@@ -1,1 +1,5 @@
-<div>Welcome to this Symfony course</div>
+{% if title %}
+  <div>{{ title }} is a movie</div>
+{% else %}
+  <p>Whoops, no title has been set.</p>
+{% endif %}
