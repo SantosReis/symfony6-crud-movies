@@ -19,13 +19,13 @@ class MoviesController extends AbstractController
     #[Route('/movies', name: 'app_movies')]
     public function index(): Response
     {
-        $repository = $this->em->getRepository(Movie::class);
+        // $repository = $this->em->getRepository(Movie::class);
         // $movies = $repository->findAll();
         // $movies = $repository->findBy([], ['id' => 'DESC']);
-        $movies = $repository->findOneBy(['id' => 5, 'title' => 'The Dark Knight'], ['id' => 'DESC']);
+        // $movies = $repository->findOneBy(['id' => 5, 'title' => 'The Dark Knight'], ['id' => 'DESC']);
         // $movies = $repository->count(['id' => 5]);
         // $movies = $repository->getClassName();
-        dd($movies);
+        // dd($movies);
 
         return $this->render('index.html.twig');
     }
