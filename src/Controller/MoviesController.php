@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Repository\MovieRepository;
+use App\Entity\Movie;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,9 +12,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MoviesController extends AbstractController
 {
     #[Route('/movies', name: 'app_movies')]
-    public function index(MovieRepository $movieRepository): Response
+    public function index(EntityManagerInterface $em): Response
     {
-        $movies = $movieRepository->findAll();
+        $repository = $em->getRepository(Movie::class);
+        $movies = $repository->findAll();
         dd($movies);
         return $this->render('index.html.twig');
     }
