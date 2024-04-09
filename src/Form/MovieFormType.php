@@ -23,14 +23,16 @@ class MovieFormType extends AbstractType
                     'class' => 'bg-transparent block border-b-2 w-full h-20 text-6xl outline-none',
                     'placeholder' => 'Enter title...'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false
             ])
             ->add('releaseYear', IntegerType::class, [
                 'attr' => array(
                     'class' => 'bg-transparent block mt-10 border-b-2 w-full h-20 text-6xl outline-none',
                     'placeholder' => 'Enter Release Year...'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false,
             ])
             ->add('description', TextareaType::class, [
                 'attr' => array(
@@ -48,7 +50,7 @@ class MovieFormType extends AbstractType
             // ))
             ->add('imagePath', FileType::class, array(
                 'required' => false,
-                'mapped' => false //do not be assign to entities
+                'mapped' => false, //do not be assign to entities
             ))
             // ->add('actors', EntityType::class, [
             //     'class' => Actor::class,
