@@ -11,10 +11,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MoviesController extends AbstractController
 {
+    private $em;
+    public function __construct(EntityManagerInterface $em){
+        $this->em = $em;
+    }
+
     #[Route('/movies', name: 'app_movies')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(): Response
     {
-        $repository = $em->getRepository(Movie::class);
+        $repository = $this->em->getRepository(Movie::class);
         $movies = $repository->findAll();
         dd($movies);
         return $this->render('index.html.twig');
