@@ -84,7 +84,7 @@ class MoviesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($imagePath) {
-                /*if ($movie->getImagePath() !== null) {
+                if ($movie->getImagePath() !== null) {
                     if (file_exists(
                         $this->getParameter('kernel.project_dir') . $movie->getImagePath()
                         )) {
@@ -105,7 +105,7 @@ class MoviesController extends AbstractController
                     $this->em->flush();
 
                     return $this->redirectToRoute('movies');
-                }*/
+                }
             } else {
                 $movie->setTitle($form->get('title')->getData());
                 $movie->setReleaseYear($form->get('releaseYear')->getData());
