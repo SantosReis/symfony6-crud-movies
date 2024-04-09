@@ -39,9 +39,12 @@ class MoviesController extends AbstractController
         $movie = new Movie();
         $form = $this->createForm(MovieFormType::class, $movie);
 
-        /*$form->handleRequest($request);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $newMovie = $form->getData();
+
+            // dd($newMovie);
+            // exit;
 
             $imagePath = $form->get('imagePath')->getData();
             if ($imagePath) {
@@ -59,11 +62,11 @@ class MoviesController extends AbstractController
                 $newMovie->setImagePath('/uploads/' . $newFileName);
             }
 
-            $this->em->persist($newMovie);
-            $this->em->flush();
+            $this->em->persist($newMovie); //add to database
+            $this->em->flush(); //commit to database
 
             return $this->redirectToRoute('movies');
-        }*/
+        }
 
         return $this->render('movies/create.html.twig', [
             'form' => $form->createView()
